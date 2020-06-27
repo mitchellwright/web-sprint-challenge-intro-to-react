@@ -9,9 +9,9 @@ const App = () => {
   // the state properties here.
   const [characters, setCharacters] = React.useState([]);
 
-
   React.useEffect( () => {
     // make axios call for list of pokemon
+
     axios.get('https://pokeapi.co/api/v2/pokemon/')
       .then( result => {
         result.data.results.forEach( char => {
@@ -24,11 +24,14 @@ const App = () => {
               })
               .catch( error => console.error(error));
         });
+
       })
       .catch( error => {
         console.error(error);
       });
-    }, []);
+
+
+  }, []);
 
   // if we don't have data yet, show loading message
   if(!characters) {
