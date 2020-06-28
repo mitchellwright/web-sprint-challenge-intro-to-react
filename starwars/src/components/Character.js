@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import CharacterDetail from "./CharacterDetail";
 
 const CharacterWrapper = styled.div`
     margin: 25px;
@@ -11,10 +12,12 @@ const Character = props => {
 
     return (
         <CharacterWrapper className="nes-container with-title is-centered">
-            <p className="title">{name}</p>
-            <img src={sprites.front_default} alt={`${name}`} />
-            <p>Weight: {weight}</p>
-            <p>Type: {types[0].type.name}</p>
+            <CharacterDetail
+                name={name}
+                types={types}
+                weight={weight}
+                sprites={sprites}
+            />
         </CharacterWrapper>
     );
 };
