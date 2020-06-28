@@ -10,27 +10,22 @@ const App = () => {
   const [characters, setCharacters] = React.useState([]);
 
   React.useEffect( () => {
+    let characterUrls = [];
     // make axios call for list of pokemon
-
     axios.get('https://pokeapi.co/api/v2/pokemon/')
       .then( result => {
-        result.data.results.forEach( char => {
-          // make axios call for the individual pokemon's detailed info
-          axios.get(char.url)
-              .then( result => {
-                setCharacters(
-                  // add the pokemon object to the characters array
-                  characters => [...characters, result.data]);
-              })
-              .catch( error => console.error(error));
-        });
-
+        return axios.all(result.data.results.map( character => {
+          return axios.get(character.url);
+        }))
       })
+      .then( results => {
+        console.log(results);
+        return results.map( character => character.data);
+      })
+      .then( results => setCharacters(results))
       .catch( error => {
         console.error(error);
       });
-
-
   }, []);
 
   // if we don't have data yet, show loading message
@@ -58,6 +53,7 @@ const App = () => {
     );
   }
 
+  // return the characters when we have data
   return (
     <div className="App">
       <h1 className="Header">Pokemon Characters</h1>
@@ -65,7 +61,7 @@ const App = () => {
           {characters.map( character => {
               return <Character key={character.id} characterData={character} />
             }
-          )}
+          ).sort( (a, b) => a.id - b.id)}
         </div>
     </div>
   );

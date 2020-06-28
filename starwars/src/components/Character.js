@@ -12,7 +12,7 @@ const Character = props => {
     return (
         <CharacterWrapper className="nes-container with-title is-centered">
             <p className="title">{name}</p>
-            <img src={sprites.front_default} alt={`image of ${name}`} />
+            <img src={sprites.front_default} alt={`${name}`} />
             <p>Weight: {weight}</p>
             <p>Type: {types[0].type.name}</p>
         </CharacterWrapper>
