@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import Character from "./components/Character";
 import "./App.css";
-import "nes.css/css/nes.min.css";
+// import "nes.css/css/nes.min.css";
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
