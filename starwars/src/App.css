@@ -1,8 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+@import url('https://unpkg.com/nes.css/css/nes.css');
+
+html, body, pre, code, kbd, samp {
+  font-family: "Press Start 2P";
+}
+
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 .Header {
   color: #443e3e;
   text-shadow: 1px 1px 5px #fff;
 }
 /* write your parent styles in here for your App.js */
+
+.character-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap
+}
